@@ -1,0 +1,5 @@
+treca	druga	cetvrta	peta	
+HOG	65	66	JQI	
+IPH	18	19	KRJ	
+JQI	71	72	LSK	
+KRJ	24	25	MTL	

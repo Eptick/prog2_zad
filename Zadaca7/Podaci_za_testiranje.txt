@@ -1,0 +1,5 @@
+kljuc	treca	cetvrta	peta	sedma	
+1	CJB	2	DKC	3	
+58	HOG	59	IPH	60	
+15	MTL	16	NUM	17	
+72	RYQ	73	SZR	74	

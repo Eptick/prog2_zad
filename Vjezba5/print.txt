@@ -1,0 +1,177 @@
+// 1    #include <iostream>
+// 1    #include <fstream>
+// 1    #include <cmath>
+// 1    #include "biblioteka_tel_imenik.cc"
+// 1    using namespace std;
+// 1    struct sZapis {
+// 1        int sifra;
+// 1        char naziv[25];
+// 1        float kol;
+// 1        float cij;
+// 1        int vr;
+// 1    };
+// 1    bool nema = 1;
+// 1    int pom;
+// 1    int prostak;
+// 1    int br = 0;
+// 1    int n = 0;
+// 1    sZapis zapis;
+// 1    sZapis z2;
+
+// 2    void ispis() {
+// 2        cout << endl << "sifra: " << z2.sifra << endl
+// 2             << "naziv: " << z2.naziv << endl
+// 2             << "cijena: " << z2.cij << endl
+// 2             << "kolicina: " << z2.kol << endl
+// 2             << "vrijeme (s): " << z2.vr << endl;
+// 2    }
+
+// 1    sZapis procitaj(sZapis& z, int n) {
+// 1        fstream dat("roba_redzic_leon.dat", ios::in|ios::binary);
+// 1        dat.seekg(n*sizeof(z), ios::beg);
+// 1        dat.read((char*)&z, sizeof(z) );
+// 1        if(dat) dat.close();
+// 1        return z;
+// 1    }
+// 1    void zapisi(sZapis& z, int n) {
+// 1        fstream dat("roba_redzic_leon.dat", ios::in|ios::out|ios::binary);
+// 1        dat.seekp(n*sizeof(z), ios::beg);
+// 1        dat.write((char*)&z, sizeof(z) );
+// 1        if(dat) dat.close();
+// 1    }
+// 1    void isprazni(int n) {
+// 1        fstream dat1("roba_redzic_leon.dat", ios::out|ios::binary);
+// 1        dat1.close();
+// 1        dat1.clear();
+// 1        z2.sifra = 0;
+// 1        for(int i=0; i<n; i++)
+// 1            zapisi(z2, i);
+// 1    }
+// 1    void status(int v=1) {
+// 1        nema = 0;
+// 1        fstream dat("roba_redzic_leon.dat", ios::in|ios::binary);
+// 1        if(dat) dat.seekg(0, ios::end);
+// 1        if(!dat) nema = 1;
+// 1        else pom = dat.tellg()/sizeof(z2);
+// 1        if(v && nema) cout << "0 - datoteka nije kreirana" << endl;
+// 1        if(dat) dat.close();
+// 1        if(nema) return;
+// 1        n = pom;
+// 1        int a;
+// 1        int j = 0;
+// 1        for(a=n; j<sqrt(a) && a>1; a--)
+// 1            for(j=2; j<sqrt(a); j++)
+// 1                if(a%j==0) break;
+// 1        prostak = (a==3 ? a : a+1);
+// 1        br = 0;
+// 1        for(int i=0; i<n; i++)
+// 1            if(procitaj(z2, i).sifra) br++;
+// 1        if(v)
+// 1            if(br) cout << "2 - datoteka sadrzi " << br << " zapisa" << endl;
+// 1            else   cout << "1 - datoteka je prazna" << endl;
+// 1    }
+
+// 2    void mog2() {
+// 2        status();
+// 2        if(nema) return;
+// 2        if(br==n) cout << "Svi su zapisi zauzeti." << endl;
+// 2        if(br==n) return;
+// 2        vrijeme_pocetak();
+// 2        cout << "sifra: ";
+// 2        cin >> zapis.sifra;
+// 2        cout << "naziv: ";
+// 2        unos(zapis.naziv);
+// 2        while(1) {
+// 2            cout << "cijena: ";
+// 2            cin >> zapis.cij;
+// 2            cout << "kolicina: ";
+// 2            cin >> zapis.kol;
+// 2            if(zapis.kol*zapis.cij>=10 && zapis.kol*zapis.cij<=9999)
+// 2                break;
+// 2            cout << "cijena * kolicina mora biti u rasponu 10 - 9999!" << endl;
+// 2        }
+// 2        vrijeme_kraj();
+// 2        zapis.vr = vrijeme_proteklo() / CLOCKS_PER_SEC;
+// 2        cout << "vrijeme proteklo (s): " << zapis.vr << endl;
+// 2        int rbr = zapis.sifra % prostak;
+// 2        cout << endl << "redni broj zapisa: " << rbr << endl;
+// 2        if(procitaj(z2, rbr).sifra) cout << "[duplikat] sifra: " << z2.sifra << " naziv: " << z2.naziv << endl;
+// 2        int k;
+// 2        for(k=rbr; k<n && procitaj(z2, k).sifra; k++)
+// 2            if(k==n-1) k = -1;
+// 2        zapisi(zapis, k);
+// 2        for(int i=0; i<n; i++)
+// 2            if(procitaj(z2, i).sifra) ispis();
+// 2    }
+
+// 2    void mog3() {
+// 2        status();
+// 2        if(nema) return;
+// 2        cout << "Broj nepraznih zapisa: " << br << endl;
+// 2        int sifra;
+// 2        cout << "Sifra: ";
+// 2        cin >> sifra;
+// 2        int rbr = sifra % prostak;
+// 2        cout << "rbr zapisa: " << rbr << endl;
+// 2        if(pom = !procitaj(z2, rbr).sifra) cout << "zapis nije pronadjen" << endl;
+// 2        if(pom) return;
+// 2        if(pom = (procitaj(z2, rbr).sifra == sifra) ) ispis();
+// 2        if(!pom)
+// 2            for(int i=rbr; !pom && i<n; i++)
+// 2                if(pom = (procitaj(z2, i).sifra == sifra) ) ispis();
+// 2                else if(z2.sifra) cout << "[duplikat] sifra: " << z2.sifra << endl;
+// 2        if(!pom)
+// 2            for(int i=0; !pom && i<rbr; i++)
+// 2                if(pom = (procitaj(z2, i).sifra == sifra) ) ispis();
+// 2                else if(z2.sifra) cout << "[duplikat] sifra: " << z2.sifra << endl;
+// 2        if(!pom) cout << "zapis nije pronadjen" << endl;
+// 2    }
+
+
+// 1    int main() {
+// 1        char x;
+    // 1    do {
+        // 1    cout << endl << "1. Kreiranje datoteke praznih zapisa" << endl;
+        // 1    cout << "2. Unos podataka o robi u relativnu datoteku (uvazavajuci duplikate)" << endl;
+        // 1    cout << "3. Pretrazivanje relativne datoteke" << endl;
+        // 1    cout << "4. (dodatni zadatak)" << endl;
+        // 1    cout << "9. Izlaz iz programa" << endl;
+        // 1    cin >> x;
+        // 1    cout << endl;
+        // 1    switch(x) {
+            // 1    case '1':
+            // 1        status();
+            // 1        pom = 0;
+            // 1        if(nema) cout << "Koliko zapisa?: ";
+            // 1        if(nema) cin >> pom;
+            // 1        if(nema) isprazni(pom);
+            // 1        status(0);
+            // 1        cout << "velicina datoteke: " << n*sizeof(z2) << " bajtova, br. zapisa: " << n << endl;
+            // 1        cout << "Broj nepraznih zapisa: " << br << endl;
+            // 1        cout << "Prvi manji prosti broj: " << prostak << endl;
+            // 1        break;
+
+            // 2    case '2':
+            // 2        mog2();
+            // 2        break;
+
+            // 2    case '3':
+            // 2        mog3();
+            // 2        break;
+
+            // 1    case '*':
+            // 1       cout << "Koliko zapisa?: ";
+            // 1       cin >> pom;
+            // 1       isprazni(pom);
+        // 1    }
+    // 1    } while(x != '9');
+// 1        return 0;
+// 1    }
+// 1    
+// Testiranje 1: 1  10  1
+// IZBRISATI DATOTEKU!
+// Testiranje 2: 
+//1  10  1
+//2  20  20  20  20
+//2  30  30  30  30
+//3  30

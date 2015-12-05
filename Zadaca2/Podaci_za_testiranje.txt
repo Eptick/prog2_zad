@@ -1,0 +1,5 @@
+treca	druga	cetvrta	peta	
+VCU	25	26	XEW	
+GNF	88	89	IPH	
+RYQ	51	52	TAS	
+CJB	14	15	ELD	

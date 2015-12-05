@@ -1,0 +1,5 @@
+kljuc	treca	druga	cetvrta	peta	
+75	YFX	76	77	AHZ	
+32	DKC	33	34	FME	
+89	IPH	90	91	KRJ	
+46	NUM	47	48	PWO	

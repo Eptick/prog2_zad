@@ -1,0 +1,4 @@
+kljuc	peta	sedma	treca	prva	sesta	
+47	YFX	48	ZGY	0.2	2.4	
+96	VCU	97	WDV	9.1	1.3	
+45	SZR	46	TAS	8.0	0.2	

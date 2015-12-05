@@ -1,0 +1,5 @@
+kljuc	treca	druga	cetvrta	peta	
+70	JQI	71	72	LSK	
+21	IPH	22	23	KRJ	
+72	HOG	73	74	JQI	
+23	GNF	24	25	IPH	
