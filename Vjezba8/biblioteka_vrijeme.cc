@@ -18,3 +18,10 @@ public:
 		return razlika;
 	};
 };//cvrijeme
+//unos znakovnog niza
+void unos(char *znakovni_niz)
+{
+	cin.getline(znakovni_niz, 150);
+	if (cin.gcount()==1)
+	  	 cin.getline (znakovni_niz,150);
+};
