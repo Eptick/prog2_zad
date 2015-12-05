@@ -20,7 +20,7 @@ class ctrokut{
 		vrijeme.pocetak();
 		cout << "Naziv trokuta: ";
 		::unos(naziv);
-		do{
+		do{                          ///////RAZLIKA
 			k = 'n';
 			cout << "Stranica a: ";
 			cin >> a;
@@ -30,7 +30,7 @@ class ctrokut{
 			cin >> c;
 			s = (a+b+c)/2;
 			if((s <= a || s <= b || s <= c) &&cout << "Stranice ne cine trokut, zelite li ponoviti unos?(d/n): ")cin >> k;
-		while(k=='d');
+		}while(k=='d');   ///////RAZLIKA
 		if(s <= a || s <= b || s <= c) ne++; else is++;
 		vrijeme.kraj();
 		brojac++;
@@ -49,8 +49,8 @@ class ctrokut{
 		if(!(s <= a || s <= b || s <= c)) p += povrsina();
 	}
 };
-ctrokut *polje;
 int ctrokut::brojac = 0;
+ctrokut *polje;
 int status(){
 	if(!polje && cout << "0 - polje nije alocirano!"<< endl << endl) return 0;
 	if(ctrokut::brojac == 0 && cout << "1 - Polje je prazno i alocirano na " << n << " elemenata!" << endl << endl) return 1;
