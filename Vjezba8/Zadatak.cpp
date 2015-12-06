@@ -32,7 +32,7 @@ class ctrokut{
 		if(s <= a || s <= b || s <= c) ne++; else is++;
 		vrijeme.kraj();
 		brojac++;
-		cout << endl << "Ukupan broj unesenih trokuta: " << ctrokut::brojac << endl;
+		cout << endl << "Ukupan broj unesenih trokuta: " << brojac << endl;
 	}
 	void ispis(){
 		cout << "==================" << endl;
@@ -72,10 +72,22 @@ int main(){
 	p = 0;
 	if(s<2) continue;
 	if(izbor == 3) while(i<ctrokut::brojac)polje[i++].ispis();
-	if(izbor == 3) cout << endl <<"Broj ispravnih trokuta: " << is << " s ukupnom povrsinom: " << p << endl;
-	if(izbor == 3) cout << "Broj unosa gdje stranice ne cine trokut: " << ne << endl << endl;
+	if(izbor == 3) cout << endl <<"Broj ispravnih trokuta: " << is << " s ukupnom povrsinom: " << p << endl
+	<< "Broj unosa gdje stranice ne cine trokut: " << ne << endl << endl;
 	}while(1);
 	if(!polje) delete []polje;
 	system("pause");
 	return 0;
 }
+/*
+Testni podatci: 1, 10, 2, Naziv, 10, 10, 10, 3
+*/
+/*
+Ako javlja gresku da funkcija unos ne postoji , prepisati na poèetak prije class ctrokut
+void unos(char *znakovni_niz)
+{
+	cin.getline(znakovni_niz, 150);
+	if (cin.gcount()==1)
+	  	 cin.getline (znakovni_niz,150);
+};
+Idalje je jedno testiranje, testni ostaju isti*/
