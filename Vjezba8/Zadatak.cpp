@@ -75,7 +75,7 @@ int main(){
 	if(izbor == 3) cout << endl <<"Broj ispravnih trokuta: " << is << " s ukupnom povrsinom: " << p << endl
 	<< "Broj unosa gdje stranice ne cine trokut: " << ne << endl << endl;
 	}while(1);
-	if(!polje) delete []polje;
+	if(polje) delete []polje;
 	system("pause");
 	return 0;
 }
