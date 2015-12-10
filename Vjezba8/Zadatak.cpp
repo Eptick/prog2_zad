@@ -19,7 +19,6 @@ class ctrokut{
 		cout << "Naziv trokuta: ";
 		cin.ignore();
 		cin.getline(naziv,35);
-		cin.ignore();
 		do{
 		k = 'n';
 		cout << "Stranica a: ";
