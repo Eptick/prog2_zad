@@ -28,9 +28,10 @@ class ctrokut{
 		cout << "Stranica c: ";
 		cin >> c;
 		s = (a+b+c)/2;
-		if((s <= a || s <= b || s <= c) &&cout << "Stranice ne cine trokut, zelite li ponoviti unos?(d/n): ")cin >> k;
+		if((s <= a || s <= b || s <= c) && cout << "Stranice ne cine trokut, zelite li ponoviti unos?(d/n): ")cin >> k;
 		}while(k=='d');
-		if(s <= a || s <= b || s <= c) ne++; else is++;
+		if(s <= a || s <= b || s <= c) ne++;
+		else is++;
 		vrijeme.kraj();
 		brojac++;
 		cout << endl << "Ukupan broj unesenih trokuta: " << brojac << endl;
