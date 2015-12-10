@@ -2,7 +2,7 @@
 #include <fstream>
 #include <cmath>
 using namespace std;
-#include "biblioteka_vrijeme.cc""
+#include "biblioteka_vrijeme.cc" // ili biblioteka_vrijeme2.cc
 int is = 0, ne = 0,n=0;
 float p = 0;
 class ctrokut{
