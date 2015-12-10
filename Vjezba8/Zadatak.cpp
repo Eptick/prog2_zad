@@ -2,7 +2,7 @@
 #include <fstream>
 #include <cmath>
 using namespace std;
-#include "biblioteka_vrijeme.cc"
+#include "biblioteka_vrijeme.cc""
 int is = 0, ne = 0,n=0;
 float p = 0;
 class ctrokut{
@@ -69,7 +69,7 @@ int main(){
 	if(izbor == 1 && s == 0) polje = new ctrokut[n];	
 		
 	if(izbor == 2 && ctrokut::brojac < n) polje[ctrokut::brojac].unos();
-	if(izbor == 2 && ctrokut::brojac >= n) cout << "Polje je puno!" << endl;
+	if(izbor == 2 && n!= 0 && ctrokut::brojac >= n) cout << "Polje je puno!" << endl;
 	i = 0;
 	p = 0;
 	if(s<2) continue;
