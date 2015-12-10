@@ -17,7 +17,8 @@ class ctrokut{
 		char k;
 		vrijeme.pocetak();
 		cout << "Naziv trokuta: ";
-		::unos(naziv);
+		cin.ignore();
+		cin.getline(naziv,35);
 		do{
 		k = 'n';
 		cout << "Stranica a: ";
@@ -82,12 +83,3 @@ int main(){
 /*
 Testni podatci: 1, 10, 2, Naziv, 10, 10, 10, 3
 */
-/*
-Ako javlja gresku da funkcija unos ne postoji , prepisati na poèetak prije class ctrokut
-void unos(char *znakovni_niz)
-{
-	cin.getline(znakovni_niz, 150);
-	if (cin.gcount()==1)
-	  	 cin.getline (znakovni_niz,150);
-};
-Idalje je jedno testiranje, testni ostaju isti*/
