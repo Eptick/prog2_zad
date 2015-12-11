@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <cmath>
+#include <cstring>
 using namespace std;
 #include "biblioteka_vrijeme.cc" // ili biblioteka_vrijeme2.cc
 int is = 0, ne = 0,n=0;
@@ -77,6 +78,20 @@ int main(){
 	if(izbor == 3) while(i<ctrokut::brojac)polje[i++].ispis();
 	if(izbor == 3) cout << endl <<"Broj ispravnih trokuta: " << is << " s ukupnom povrsinom: " << p << endl
 	<< "Broj unosa gdje stranice ne cine trokut: " << ne << endl << endl;
+	if(izbor != 4) continue;
+	float a;
+	char novi[35];
+	int x = -1;
+	i = 0;
+	cout << "Unesite duzinu stranice a: ";
+	cin >> a;
+	while(i < ctrokut::brojac) if(polje[i++].a == a) x = i-1;
+	if(x==-1) continue;
+	cout << "Unesite novi naziv trokuta: ";
+	cin.ignore();
+	cin.getline(novi,35);
+	strcpy(polje[x].naziv,novi);
+	polje[x].ispis();
 	}while(1);
 	if(polje) delete []polje;
 	system("pause");
