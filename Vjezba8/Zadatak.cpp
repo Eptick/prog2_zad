@@ -57,7 +57,7 @@ int main(){
 	cout << "1. Dinamicka alokacija polja trokuta" << endl
 	<< "2. Unos podataka o trokutima" << endl
 	<< "3. Ispis podataka o svim trokutima" << endl
-	<< "4. dodatna mogucnost!"
+	<< "4. dodatna mogucnost!" << endl
 	<< "9. Izlaz iz programa" << endl
 	cin >> izbor;
 	if(izbor == 9) break;
