@@ -87,4 +87,4 @@ int main(){
 	system("pause");
 	return 0;
 }
-
+// Testni podatci: 1, 10, 2, Naziv, 1, 1, 2, 2, 3, 9
