@@ -1,6 +1,4 @@
 #include <iostream>
-#include <fstream>
-#include <cmath>
 using namespace std;
 #include "biblioteka_vrijeme.cc" // ili biblioteka_vrijeme2.cc
 int is = 0, ne = 0,n=0;
@@ -33,7 +31,7 @@ class cpravokutnik{
 		cin >> x2;
 		cout << "y2: ";
 		cin >> y2;
-		if((x1 >= x2 || y1 >= y2) && cout << "Stranice ne cine pravokutnik, zelite li ponoviti unos?(d/n): ")cin >> k;
+		if(povrsina() == -1 && cout << "Stranice ne cine pravokutnik, zelite li ponoviti unos?(d/n): ")cin >> k;
 		}while(k=='d');
 		if(x1 >= x2 || y1 >= y2) ne++;
 		else is++;
