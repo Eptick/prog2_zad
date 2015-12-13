@@ -4,83 +4,89 @@
 using namespace std;
 #include "biblioteka_vrijeme.cc" // ili biblioteka_vrijeme2.cc
 int is = 0, ne = 0,n=0;
-float p = 0;
-class ctrokut{
+class cpravokutnik{
 		cvrijeme vrijeme;
-		float s;
+		float sirina, visina;
 	public:
 		static int brojac;
 		char naziv[35];
-		float a,b,c;
-	float povrsina(){ return sqrt(s*(s-a)*(s-b)*(s-c)); }
+		float x1,x2,y1,y2;
+	float povrsina(){ 
+		sirina = x2-x1;
+		visina = y2-y1;
+		if(sirina<=0 || visina <= 0) return -1;
+		return sirina * visina;
+	}
 	void unos(){
 		char k;
 		vrijeme.pocetak();
-		cout << "Naziv trokuta: ";
+		cout << "Naziv pravokutnika: ";
 		cin.ignore();
 		cin.getline(naziv,35);
 		do{
 		k = 'n';
-		cout << "Stranica a: ";
-		cin >> a;
-		cout << "Stranica b: ";
-		cin >> b;
-		cout << "Stranica c: ";
-		cin >> c;
-		s = (a+b+c)/2;
-		if((s <= a || s <= b || s <= c) && cout << "Stranice ne cine trokut, zelite li ponoviti unos?(d/n): ")cin >> k;
+		cout << "x1: ";
+		cin >> x1;
+		cout << "y1: ";
+		cin >> y1;
+		cout << "x2: ";
+		cin >> x2;
+		cout << "y2: ";
+		cin >> y2;
+		if((x1 >= x2 || y1 >= y2) && cout << "Stranice ne cine pravokutnik, zelite li ponoviti unos?(d/n): ")cin >> k;
 		}while(k=='d');
-		if(s <= a || s <= b || s <= c) ne++;
+		if(x1 >= x2 || y1 >= y2) ne++;
 		else is++;
 		vrijeme.kraj();
 		brojac++;
-		cout << endl << "Ukupan broj unesenih trokuta: " << brojac << endl;
+		 cout <<"Broj ispravnih pravokutnika: " << is << endl
+			<< "Broj nepispravnih pravokutnika: " << ne << endl << endl;
 	}
 	void ispis(){
 		cout << "==================" << endl;
 		cout << "Naziv trokuta: " << naziv << endl;
-		if(!(s <= a || s <= b || s <= c))
-		cout << "Stranica a: " << a << endl
-		<< "Stranica b: " << b << endl
-		<< "Stranica c: " << c << endl
-		<< "Povrsina: " << povrsina() << endl;
-		else cout << "Stranice ne cine trokut!" << endl;
+		if(!(x1 >= x2 || y1 >= y2))
+		cout << "x1: " << x1 << endl
+		<< "y1: " << y1 << endl
+		<< "x2: " << x2 << endl
+		<< "y2: " << y2 << endl; //Maknuti ovu ; ako se ispisuje povrsina
+	  //<< "Povrisina: " << povrsina() << endl; Ako trazi da treba i povrsinu ispisat. U zadatku pise da ne treba pa mi je to cudno.
+		else cout << "Stranice ne cine pravokutnik!" << endl;
 		cout << "Vrijeme: " << vrijeme.proteklo() << endl;
-		if(!(s <= a || s <= b || s <= c)) p += povrsina();
 	}
 };
-ctrokut *polje;
-int ctrokut::brojac = 0;
+cpravokutnik *polje;
+int cpravokutnik::brojac = 0;
 int main(){
 	int izbor,i,s;
 	do{
-	cout << "1. Dinamicka alokacija polja trokuta" << endl
-	<< "2. Unos podataka o trokutima" << endl
-	<< "3. Ispis podataka o svim trokutima" << endl
+	cout << "1. Dinamicka alokacija polja pravokutnika/ispis podataka o pravokutnicima" << endl
+	<< "2. Unos podataka o pravokutnicima" << endl
+	<< "3. Ispis podataka o svim pravokutnicima" << endl
 	<< "9. Izlaz iz programa" << endl;
 	cin >> izbor;
 	if(izbor == 9) break;
 	s = 2;
 	if(!polje && cout << "0 - polje nije alocirano!"<< endl << endl) s= 0;
-	if(polje && ctrokut::brojac == 0 && cout << "1 - Polje je prazno i alocirano na " << n << " elemenata!" << endl << endl) s = 1;
-	if(s == 2)cout << "2 - Polje je alocirano na " << n << " elemenata i sadrzi " << ctrokut::brojac << " trokuta" << endl << endl;
+	if(polje && cpravokutnik::brojac == 0 && cout << "1 - Polje je prazno i alocirano na " << n << " elemenata!" << endl << endl) s = 1;
+	if(s == 2)cout <<"Broj ispravnih pravokutnika: " << is << endl << "Broj nepispravnih pravokutnika: " << ne << endl << endl;
+	if(s == 0 && (izbor == 2 || izbor == 3 ) && cout << "Alocirajte polje" << endl) continue;
 	
 	if(izbor == 1 && s == 0 && cout << "Koliko elemenata polja zelite?: ") cin >> n;
-	if(izbor == 1 && s == 0) polje = new ctrokut[n];	
-		
-	if(izbor == 2 && ctrokut::brojac < n) polje[ctrokut::brojac].unos();
-	if(izbor == 2 && n!= 0 && ctrokut::brojac >= n) cout << "Polje je puno!" << endl;
+	if(izbor == 1 && s == 0) polje = new cpravokutnik[n];	
 	i = 0;
-	p = 0;
+	if(izbor == 1 && s == 2)
+		while(i<cpravokutnik::brojac)polje[i++].ispis();
+		
+	if(izbor == 2 && cpravokutnik::brojac < n) polje[cpravokutnik::brojac].unos();
+	if(izbor == 2 && n!= 0 && cpravokutnik::brojac >= n) cout << "Polje je puno!" << endl;
+	i = 0;
 	if(s<2) continue;
-	if(izbor == 3) while(i<ctrokut::brojac)polje[i++].ispis();
-	if(izbor == 3) cout << endl <<"Broj ispravnih trokuta: " << is << " s ukupnom povrsinom: " << p << endl
-	<< "Broj unosa gdje stranice ne cine trokut: " << ne << endl << endl;
+	if(izbor == 3) while(i<cpravokutnik::brojac)polje[i++].ispis();
+
 	}while(1);
 	if(polje) delete []polje;
 	system("pause");
 	return 0;
 }
-/*
-Testni podatci: 1, 10, 2, Naziv, 10, 10, 10, 3
-*/
+
