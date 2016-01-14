@@ -31,7 +31,8 @@ class cpredmeti {
 	
 	void unos(bool x){ // TEST 1
 		broj_predmeta++;
-		cpredmeti *novi,*zadnji;
+		cpredmeti *novi;
+		cpredmeti *zadnji;
 		novi = new cpredmeti; 
 		novi->predmet.unos();
 		zadnji = this;
@@ -101,7 +102,8 @@ class cprijave{ // TEST 2
 	}
 	void unos(){ // TEST 2
 		broj_prijava++;
-		cprijave *novi,*zadnji;
+		cprijave *novi;
+		cprijave *zadnji;
 		novi = new cprijave; 
 		novi->zapis->unos();
 		zadnji = this;
