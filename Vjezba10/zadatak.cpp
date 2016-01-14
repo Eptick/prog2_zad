@@ -54,7 +54,7 @@ class cpredmeti {
                   cout << "Predmet: " <<  setac->predmet.nazivp<<endl;
 	}
 };
-cpredmeti *predmeti; // TEST 1
+cpredmeti *predmeti; // TEST 1 OBAVEZNO PREPISATI POSLJE KLASE CPREDMETI
 
 class cprijave_zapis{ // TEST 2
 	public:
@@ -114,7 +114,7 @@ class cprijave{ // TEST 2
                setac->zapis->ispis();
 	}
 };
-cprijave *prijave; // TEST 2
+cprijave *prijave; // TEST 2 OBAVEZNO PREPISATI POSLJE KLASE CPRIJAVE
 int main(){
 	int izbor;
 	char dodati;
@@ -168,4 +168,5 @@ int main(){
 	system("pause");
 	return 0;
 }
-
+//Prepisati samo prazan main, pa onda klase za prvo testiranje, pa onda popuniti main sa prvim testiranjem
+// Za drugo testiranje prvo prepisati klase pa onda ostatak u main
