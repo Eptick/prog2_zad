@@ -33,7 +33,8 @@ class cpredmeti {
 		broj_predmeta++;
 		cpredmeti *novi;
 		cpredmeti *zadnji;
-		novi = new cpredmeti; 
+		novi = new cpredmeti;
+		 novi->sljedeci = NULL;
 		novi->predmet.unos();
 		zadnji = this;
 		if(x) novi->sljedeci = zadnji->sljedeci;
@@ -105,6 +106,7 @@ class cprijave{ // TEST 2
 		cprijave *novi;
 		cprijave *zadnji;
 		novi = new cprijave; 
+		novi->sljedeci = NULL;
 		novi->zapis->unos();
 		zadnji = this;
     	while (zadnji->sljedeci)
