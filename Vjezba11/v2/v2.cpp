@@ -35,6 +35,13 @@ class cpredmet : public cstudij{
 			cout << "Novi predmet!\n"; 
 		if(!p)	p = true; 
 		} 
+		int sifra(bool x){
+			if(x)
+				return sPredmeta;
+			else
+				cout <<"Naziv predmeta: "<<  naziv << endl;
+			return -1;
+		}
 		void unos(){
 			broj_predmeta++;
 			novip->sljedeci = NULL;
@@ -62,13 +69,7 @@ class cpredmet : public cstudij{
 	        		if (sPredmeta == s->sifra(true) && strcmp(typeid(*s).name(),"8cprijava") == 0 ) 
 	                    s->ispis(); 
 		}
-		int sifra(bool x){
-			if(x)
-				return sPredmeta;
-			else
-				cout <<"Naziv predmeta: "<<  naziv << endl;
-			return -1;
-		}
+	
 };
 // Sve iznad ove linije prepisat za prvo testiranje
 
@@ -81,6 +82,9 @@ class cprijava : public cstudij{
 		char rok[15];
 		cprijava(){
 			cout << "Nova prijava!\n";
+		}
+		int sifra(bool x){ 
+			return sPredmeta;
 		}
 		void unos(){
 			broj_prijava++;
@@ -116,9 +120,6 @@ class cprijava : public cstudij{
 			"\nSifra predmeta: "<<sPredmeta<<
 			"\nRok: "<<rok<<endl;
 		}	
-		int sifra(bool x){ 
-			return sPredmeta;
-		}
 };
 
 int main(){
