@@ -9,7 +9,7 @@
 using namespace std;
 int suma=0;
 class lista1_osnovna{
-protected:
+public:
   lista1_osnovna *sljedeci;
 public:
   int kljuc;
@@ -141,6 +141,7 @@ void zadatak(){
 int main(){
   zadatak();
   olista1=new lista1_osnovna;
+  cout << "Size of glava: " << sizeof(*olista1) << endl;
   char dalje;
   int b=0;
   //
@@ -160,6 +161,14 @@ int main(){
   olista1->f37();
   cout << "----------------------------------------------" << endl;
   cout << "SUMA IMA VRIJEDNOST: " << suma << endl;
+  lista1_osnovna *t = olista1->sljedeci;
+  cout << "Popis kljuceva: ";
+  while(t){
+  	cout << t->kljuc;
+  	t = t->sljedeci;
+  	if(t) cout << ", ";
+  	else cout << endl;
+  }
   cout << "ARITMETICKA SREDINA KLJUCEVA JE: " << asKljuca/b << endl;
   cout << "int* = " << sizeof(int*) << " b" << endl;
   cout << "Leon Rediæ 43284 \nKraj programa." << endl;

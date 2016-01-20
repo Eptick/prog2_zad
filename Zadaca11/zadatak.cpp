@@ -140,6 +140,7 @@ void zadatak(){
 int main(){
   zadatak();
   olista1=new lista1_osnovna;
+  cout << "Size of lista1_osnovna: " << sizeof(lista1_osnovna) <<endl;
   char dalje;
   int b=0;
   do{

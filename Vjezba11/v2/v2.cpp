@@ -48,6 +48,8 @@ class cpredmet : public cstudij{
 			cout << "\nSifra predmeta: ";
 			cin >> sPredmeta;
 			cstudij *s;
+			// U ovoj do while petlji paziti da svuda budu razmaci i da bude tocno tako prepisano
+			// Tocno prepisati kak je napisano
 			do
 			for(s=lista->sljedeci;s;s=s->sljedeci)
 				if(s->sifra(true) == sPredmeta)
@@ -98,7 +100,8 @@ class cprijava : public cstudij{
 			cout << "Sifra predmeta: ";
 			cin >> sPredmeta;
 			bool k = false;
-			// U ovoj do while petlji paziti da svuda budu razmaci i da bude točno prepisano
+			// U ovoj do while petlji paziti da svuda budu razmaci i da bude tocno prepisano
+			// Tocno prepisati kak je napisano
 			do
 			for (cstudij *s=lista->sljedeci;s;s=s->sljedeci)
 	        	if (sPredmeta == s->sifra(true) && strcmp(typeid(*s).name(),"8cpredmet") == 0  )
