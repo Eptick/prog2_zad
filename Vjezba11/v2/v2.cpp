@@ -18,6 +18,7 @@ class cstudij{
 //=== POČETAK ONO MALO ISPOD NJE ===
 int broj_predmeta = 0;
 int broj_prijava = 0;
+bool ima_predmeta = false;
 bool p = false;
 cstudij *lista;
 cstudij *_zadnji;
@@ -36,6 +37,8 @@ class cpredmet : public cstudij{
 		if(!p)	p = true; 
 		} 
 		int sifra(bool x){
+			if(x == false)
+				ima_predmeta = true;
 			if(x)
 				return sPredmeta;
 			else
@@ -50,11 +53,11 @@ class cpredmet : public cstudij{
 			cstudij *s;
 			// U ovoj do while petlji paziti da svuda budu razmaci i da bude tocno tako prepisano
 			// Tocno prepisati kak je napisano
-			do
-			for(s=lista->sljedeci;s;s=s->sljedeci)
+			do{
+			for(s=lista->sljedeci; s; s=s->sljedeci)
 				if(s->sifra(true) == sPredmeta)
 					break;
-			while(s && s->sifra(true) == sPredmeta && strcmp(typeid(*s).name(),"8cpredmet") == 0 && cout << "Sifra postoji, ponovni unos: " && cin >> sPredmeta);
+			}while(s && s->sifra(true) == sPredmeta && strcmp(typeid(*s).name(),"8cpredmet") == 0 && cout << "Sifra postoji, ponovni unos: " && cin >> sPredmeta);
 			cout << "Naziv Predmeta: ";
 			cin.ignore();
 			cin.getline(naziv,35);
@@ -142,6 +145,7 @@ int main(){
 	do{ 
 		//=== POČETAK ONO U NJEMU ===
 		izbor = 'x';
+		ima_predmeta = false;
 		cout << "1. Unos predmeta/unos prijava/ispis predmeta i prijava\n" << 
  				"2. Ispis predmeta/ispis prijava (odvojeno)\n" <<
 				"3. Ispis liste prijava zadanog predmeta (prema sifri predmeta)\n"<<
@@ -187,6 +191,7 @@ int main(){
 				for(cstudij *s =lista->sljedeci;s;s=s->sljedeci)
 					if(s->sifra(true) == sifra && strcmp(typeid(*s).name(),"8cpredmet") == 0 )
 						s->sifra(false);
+				if(ima_predmeta == false && cout << "Nema predmeta s tom sifrom!" << endl) break;
 				for(cstudij *s =lista->sljedeci;s;s=s->sljedeci)
 					if(s->sifra(true) == sifra && strcmp(typeid(*s).name(),"8cprijava") == 0 )
 						s->ispis();
