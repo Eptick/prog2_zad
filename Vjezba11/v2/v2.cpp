@@ -1,5 +1,5 @@
 // Redosljed prepisivanja
-// Prazan main, pa klasa cstudij i ono malo ispod nje, varijable od main,
+// Prazan main, pa klasa cstudij i ono malo ispod nje, varijable od main bez inicijalizacije liste,
 // do-while i ono u njemu, prazan switch pa onda klasa cpredmet, 
 // poslje klase cpredmet popunit case 1 do oznake za testiranje 2
 // testirati prvi puta na 6 {}, nakon toga prepisati klasu cprijava i ostatak case 1, pa case 2, pa case 3
@@ -54,9 +54,7 @@ class cpredmet : public cstudij{
 			for(s=lista->sljedeci;s;s=s->sljedeci)
 				if(s->sifra(true) == sPredmeta)
 					break;
-			while(s && s->sifra(true) == sPredmeta 
-					&& strcmp(typeid(*s).name(),"8cpredmet") == 0 && 
-					cout << "Sifra postoji, ponovni unos: " && cin >> sPredmeta);
+			while(s && s->sifra(true) == sPredmeta && strcmp(typeid(*s).name(),"8cpredmet") == 0 && cout << "Sifra postoji, ponovni unos: " && cin >> sPredmeta);
 			cout << "Naziv Predmeta: ";
 			cin.ignore();
 			cin.getline(naziv,35);
@@ -129,11 +127,13 @@ int main(){
 	//=== POČETAK VARIJABLE OD MAIN ===
 	int x;
 	int sifra;
-	char izbor;
+	char izbor; 
+	//=== KRAJ VARIJABLE OD MAIN ===
+	//=== OVO PREPISATI POSLJE KLASE CPREDMET ===
 	lista = new cpredmet;
 	lista->sljedeci = NULL;
-	_zadnji = lista;
-	//=== KRAJ VARIJABLE OD MAIN ===
+	_zadnji = lista; 
+	//=== OVO PREPISATI POSLJE KLASE CPREDMET ===
 	do{ 
 		//=== POČETAK ONO U NJEMU ===
 		izbor = 'x';
