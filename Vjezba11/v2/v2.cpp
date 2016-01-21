@@ -53,11 +53,11 @@ class cpredmet : public cstudij{
 			cstudij *s;
 			// U ovoj do while petlji paziti da svuda budu razmaci i da bude tocno tako prepisano
 			// Tocno prepisati kak je napisano
-			do{
-			for(s=lista->sljedeci; s; s=s->sljedeci)
+			do
+			for(s=lista->sljedeci;s;s=s->sljedeci)
 				if(s->sifra(true) == sPredmeta)
 					break;
-			}while(s && s->sifra(true) == sPredmeta && strcmp(typeid(*s).name(),"8cpredmet") == 0 && cout << "Sifra postoji, ponovni unos: " && cin >> sPredmeta);
+			while(s && s->sifra(true) == sPredmeta && strcmp(typeid(*s).name(),"8cpredmet") == 0 && cout << "Sifra postoji, ponovni unos: " && cin >> sPredmeta);
 			cout << "Naziv Predmeta: ";
 			cin.ignore();
 			cin.getline(naziv,35);
