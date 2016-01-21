@@ -12,7 +12,7 @@ class cstudij{
 	public:
 		cstudij *sljedeci;
 		virtual void unos() = 0;
-		virtual void ispis(bool x = false) = 0;
+		virtual void ispis(bool x = false, bool y = false) = 0;
 		virtual int sifra(bool x) = 0;
 };
 //=== POČETAK ONO MALO ISPOD NJE ===
@@ -61,13 +61,18 @@ class cpredmet : public cstudij{
 			_zadnji->sljedeci = novip;
 			_zadnji = novip;		
 		}
-		void ispis(bool x = false){
+		void ispis(bool x = false, bool y = false){  
 			cout << "\nSifra predmeta: "<<sPredmeta<<
 			"\nNaziv Predmeta: "<< naziv << endl;
 			if(x) cout << "==== POPIS PRIJAVA ====" << endl;
 			if(x) for (cstudij *s=lista->sljedeci;s;s=s->sljedeci)
 	        		if (sPredmeta == s->sifra(true) && strcmp(typeid(*s).name(),"8cprijava") == 0 ) 
 	                    s->ispis(); 
+			int b = 0;
+			if(y) for (cstudij *s=lista->sljedeci;s;s=s->sljedeci)
+	        		if (sPredmeta == s->sifra(true) && strcmp(typeid(*s).name(),"8cprijava") == 0 ) 
+	                    b++;
+			if(y) cout << "Broj prijava za ovaj predmet: " << b << endl;
 		}
 	
 };
@@ -115,7 +120,7 @@ class cprijava : public cstudij{
 			cin.ignore();
 			cin.getline(rok,15);	
 		}
-		void ispis(bool x = false){
+		void ispis(bool x = false, bool y = false){
 			cout << "\nSifra prijave: "<<sPrijave<<
 			"\nMaticni broj studenta: "<<mbStudenta<<
 			"\nSifra predmeta: "<<sPredmeta<<
@@ -168,7 +173,7 @@ int main(){
 				cin >> izbor;
 				for(cstudij *s =lista->sljedeci;s;s=s->sljedeci)
 					if(izbor == '0' && strcmp(typeid(*s).name(),"8cpredmet") == 0 )
-						s->ispis();
+						s->ispis(false, true);
 					else if(izbor == '1' && strcmp(typeid(*s).name(),"8cprijava") == 0 )
 						s->ispis();	
 			break;
