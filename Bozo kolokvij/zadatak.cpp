@@ -63,7 +63,7 @@ class radovi{
   				cout << "Redni broj kategorije: ";
   				cin >> rb;
   				if( rb > n) n = rb;
-  				cout << "Naslov";
+  				cout << "Naslov: ";
   				cin.ignore();
   				cin.getline(naslov,35);
   				vrijeme2 = clock();
@@ -82,10 +82,10 @@ class radovi{
      		 if (dat.eof())break;
      		 if(rb != k) continue;
      		 cout << "======"<<endl;
-     		 cout << sifra << endl;
-     		 cout << rb << endl;
-      		cout << naslov << endl;
-      		cout << vrijeme << endl;
+     		 cout << "Sifra: " << sifra << endl;
+     		 cout <<"Redni broj:" <<  rb << endl;
+      		cout << "Naslov: " << naslov << endl;
+      		cout << "Vrijeme: "<< vrijeme << endl;
     	}
 		dat.close(); dat.clear();
 	}
@@ -102,7 +102,7 @@ int main(){
 	dat.close();
 	dat.clear();
 	do{
-		cout << "Menu" <<endl;
+		cout << "1. Mogucnost jedan!" <<endl;
 		cout << "9. Izlaz" << endl;
 		cin >> izbor;
 		switch(izbor){
@@ -116,8 +116,9 @@ int main(){
 			if(x == 2) lista->funkcija(1);
 			if(x == 3) rad.funkcija(0);
 			if(x == 4) rad.funkcija(1);
-			cout << "Broj elemenata aktegorije: " << kat << endl;
-			cout << "Najveæi redni broj je: " << n<< endl;
+			
+			cout << endl << "Broj elemenata aktegorije: " << kat << endl;
+			cout << "Najveci redni broj je: " << n<< endl;
 			break;
 		}
 	} while(izbor != 9);
