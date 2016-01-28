@@ -5,6 +5,8 @@ using namespace std;
 int redni_broj = 100;
 int kat = 0;
 int n = 100;
+int p;
+bool t = false;
 class kategorije{
 public:
 	kategorije *sljedeci;
@@ -36,7 +38,10 @@ public:
 			case 1:
 				for(kategorije *s = this->sljedeci;s;s=s->sljedeci)
 					cout << "Redni broj: " << s->rb << endl << "Naslov: " << s->naslov<<endl<<"Urednik: "<<s->urednik<<endl;
-
+			break;
+			case 2:
+				for(kategorije *s = this->sljedeci;s;s=s->sljedeci)
+					if(s->rb == p) t = true;
 			break;
 			
 		}
@@ -45,6 +50,7 @@ public:
 	}
 };
 fstream dat;
+kategorije *lista;
 class radovi{
 	public:
 		int sifra;
@@ -60,8 +66,13 @@ class radovi{
 				dat.open("radovi.dat", ios::in|ios::out|ios::app|ios::binary);
   				cout << "Sifra rada: ";
   				cin >> sifra;
-  				cout << "Redni broj kategorije: ";
-  				cin >> rb;
+  				t = false;
+				cout << "Redni broj kategorije: ";
+				cin >> p;
+  				do
+				  lista->funkcija(2);
+  				while(!t && cout << "Redni broj ne postoji, ponovni unos: " && cin >> p);
+  				rb = p;
   				if( rb > n) n = rb;
   				cout << "Naslov: ";
   				cin.ignore();
@@ -75,7 +86,7 @@ class radovi{
 			case 1:
 			dat.open("radovi.dat", ios::in|ios::binary);
 			int k;
-			cout << "Unesite redni broj";
+			cout << "Unesite redni broj kategorije: ";
 			cin >> k;
 		while(1){
     		  dat.read ((char *)this,sizeof(*this));
@@ -95,7 +106,7 @@ class radovi{
 int main(){
 	int izbor;
 	int x;
-	kategorije *lista = new kategorije;
+	lista = new kategorije;
 	lista->sljedeci = NULL;
 	radovi rad;
 	dat.open("radovi.dat", ios::out);
@@ -117,7 +128,7 @@ int main(){
 			if(x == 3) rad.funkcija(0);
 			if(x == 4) rad.funkcija(1);
 			
-			cout << endl << "Broj elemenata aktegorije: " << kat << endl;
+			cout << endl << "Broj elemenata kategorije: " << kat << endl;
 			cout << "Najveci redni broj je: " << n<< endl;
 			break;
 		}
